@@ -51,7 +51,7 @@ print(sum(min_numbers)// len(min_numbers))
 
 #slicing af lister
 forfattere =['Karen Blixen', 'Hans Christian Andersen', 'Benny Andersen', 'Vita Andersen', 'Peter Høeg']
-print(forfattere[0:2])
+print(forfattere[0:3])
 print(forfattere[3:5])
 
 
