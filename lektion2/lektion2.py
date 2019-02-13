@@ -35,7 +35,7 @@ for value in range(1,6):
 
 min_numbers = []
 num = 3
-tal_3_tabellen = 99 // num + 2
+tal_3_tabellen = 99 // num + 1
 for min_number in range(1, tal_3_tabellen):
     min_number= min_number *num
     min_numbers.append(min_number)
