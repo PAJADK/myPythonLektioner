@@ -33,7 +33,6 @@ for value in range(1,6):
  squares.append(square)
  print(squares)
 
-
 min_numbers = []
 num = 3
 tal_3_tabellen = 99 // num + 2
