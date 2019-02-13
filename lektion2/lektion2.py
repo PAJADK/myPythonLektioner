@@ -46,9 +46,13 @@ print(min_numbers)
 print(min(min_numbers))
 print(max(min_numbers))
 print(sum(min_numbers))
+print("  ********** Gennemsnittet ********** ")
 print(sum(min_numbers)// len(min_numbers))
+
 #slicing af lister
-#print(min_numbers[3:9])
+forfattere =['Karen Blixen', 'Hans Christian Andersen', 'Benny Andersen', 'Vita Andersen', 'Peter Høeg']
+print(forfattere[0:3])
+print(forfattere[3:5])
 
 
 
