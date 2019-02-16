@@ -7,7 +7,6 @@ print(fullnavn)
 print(fullnavn.upper())
 print("Albert Einstein once said, “A person who never made a mistake never tried anything new.”")
 
-
 #Opgave 3
 tal1 =7+5
 tal2 = 3*4
