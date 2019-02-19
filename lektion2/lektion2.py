@@ -40,9 +40,10 @@ for min_number in range(1, tal_3_tabellen):
     min_number= min_number *num
     min_numbers.append(min_number)
     print(min_number)
-
+my_numbers = list(range(3, 100, 3))
+print(my_numbers)
 print(" ************ end ********** ")
-print(min_numbers)
+
 print(min(min_numbers))
 print(max(min_numbers))
 print(sum(min_numbers))
