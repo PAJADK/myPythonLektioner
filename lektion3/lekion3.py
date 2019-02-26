@@ -45,13 +45,21 @@ for country in countries:
     for city in country['cities']:
         print("\t" + city.title())
 
+# Opgave 6 - søgning
+lande = ["Danmark", "Tyskland", "Sverige", ""]
+x = input("Søg land her: ")
+sub = x
 
-
+for land in lande:
+    if sub in land:
+        print("Har fundet: " + sub.title())
+        break
+    else:
+        print("ikke fundet")
 
 
 """
-print(lands["byer"])
-print(lands.get('byer'))
+
 
 my_dict = dict({1: 'apple', 2: 'ball'})
 print(my_dict.keys())
