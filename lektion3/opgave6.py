@@ -9,4 +9,4 @@ if any(txtInput in s for s in lande):
         if land.__contains__(txtInput):
             print("\t" + land.title())
 else:
-    print("Findes ikke: ")
+    print("Landet findes ikke: ")
