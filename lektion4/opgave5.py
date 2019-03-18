@@ -6,8 +6,8 @@ while mereInput:
     dansk = input("Indtast dansk ord: ")
     if dansk == 'q':
         mereInput = False
-    if dansk in ordbog.keys():
-        print(ordbog[dansk])
+    elif dansk in ordbog.keys():
+        print(dansk.title() + " ---> " + ordbog[dansk].title())
     else:
         print(dansk + " Findes ikke i ordbogen!")
 

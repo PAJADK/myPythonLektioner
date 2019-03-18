@@ -13,4 +13,4 @@ while mereInput:
         print("\n::::: Dansk-Engelsk ordbog :::::")
 
 for dansk, engelsk in ordbog.items():
-    print("\n" + dansk.title() + " --> " + engelsk)
+    print("\n" + dansk.title() + " --> " + engelsk.title())
