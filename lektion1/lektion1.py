@@ -16,6 +16,7 @@ tal5 = 0.2 + 0.6
 print(int(tal4))
 print(tal5)
 print(3**3)
+print(4**3)
 
 #opgave 4
 alder= 57
