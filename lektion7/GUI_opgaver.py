@@ -3,8 +3,11 @@ from tkinter import *
 
 
 def change():
-   # pass
-   labelTxt.config(text=entry.get())
+    # pass
+    if len(entry.get()) == 0:
+        labelTxt.config(text=" Input felten er tom!!!!")
+    else:
+        labelTxt.config(text=entry.get())
 
 
 root = tk.Tk()
@@ -49,10 +52,9 @@ frame2 = tk.Frame(root)
 frame2.pack()
 
 labelTxt2 = tk.Label(frame2, text="Indtast navn:")
-labelTxt2.pack(side=tk.LEFT, padx= 10, pady=10)
+labelTxt2.pack(side=tk.LEFT, padx=10, pady=10)
 
 entry = tk.Entry(frame2)
-entry.pack(side=tk.LEFT, padx= 10, pady=10)
-
+entry.pack(side=tk.LEFT, padx=10, pady=10)
 
 root.mainloop()
