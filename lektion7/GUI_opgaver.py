@@ -1,10 +1,11 @@
 import tkinter as tk
-
+#from tkinter import messagebox
 
 def change():
     # pass
     if len(entry.get()) == 0:
         labelTxt.config(text=" Input felten er tom!!!!")
+        #tk.messagebox.showwarning("Warning", "Warning message")
     else:
         labelTxt.config(text=entry.get())
 
@@ -23,6 +24,14 @@ def About():
 
 root = tk.Tk()
 root.title("********* TKinter ********")
+
+#root.withdraw()
+
+# message box display
+#tk.messagebox.showerror("Error", "Error message")
+#tk.messagebox.showwarning("Warning", "Warning message")
+#tk.messagebox.showinfo("Information", "Informative message")
+
 
 menu = tk.Menu(root)
 root.config(menu=menu)
