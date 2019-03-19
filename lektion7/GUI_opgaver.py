@@ -1,5 +1,4 @@
 import tkinter as tk
-from tkinter import *
 
 
 def change():
@@ -10,8 +9,36 @@ def change():
         labelTxt.config(text=entry.get())
 
 
+def NewFile():
+    print("New File!")
+
+
+def OpenFile():
+    print("Open file")
+
+
+def About():
+    print("This is a simple example of a menu")
+
+
 root = tk.Tk()
 root.title("********* TKinter ********")
+
+menu = tk.Menu(root)
+root.config(menu=menu)
+filemenu = tk.Menu(menu)
+menu.add_cascade(label="File", menu=filemenu)
+filemenu.add_command(label="New", command=NewFile)
+filemenu.add_command(label="Open...", command=OpenFile)
+filemenu.add_separator()
+filemenu.add_command(label="Exit", command=root.quit)
+
+helpmenu = tk.Menu(menu)
+menu.add_cascade(label="Help", menu=helpmenu)
+helpmenu.add_command(label="About...", command=About)
+
+#menu.pack()
+
 """Her laver vi en frame og packer den ned i root vinduet."""
 frame = tk.Frame(root)
 frame.pack()
@@ -28,10 +55,10 @@ button2 = tk.Button(frame, text="Change text", command=change)
 button2.pack()
 
 """ Opgave 3 - Text widget """
-scroll = Scrollbar(frame)
+scroll = tk.Scrollbar(frame)
 txt = tk.Text(frame, height=4, width=50)
-scroll.pack(side=RIGHT, fill=Y)
-txt.pack(side=LEFT, fill=Y)
+scroll.pack(side=tk.RIGHT, fill=tk.Y)
+txt.pack(side=tk.LEFT, fill=tk.Y)
 scroll.config(command=txt.yview)
 txt.config(yscrollcommand=scroll.set)
 
@@ -45,7 +72,7 @@ The heartache, and the thousand natural shocks
 That flesh is heir to. 'Tis a consummation
 Devoutly to be wished."""
 
-txt.insert(END, quote)
+txt.insert(tk.END, quote)
 
 """ Opgave 4 - Entry widget """
 frame2 = tk.Frame(root)
