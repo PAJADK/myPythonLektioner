@@ -2,7 +2,7 @@ import re
 
 class Materiale():
 
-    def __init__(self, idnr=0, titel="", antal=2, antaludlaan=2, aarstal=9999):
+    def __init__(self, idnr=0, titel="", antal=0, antaludlaan=0, aarstal=9999):
         self.idnr = idnr
         self.titel = titel
         self.antal = antal
@@ -11,16 +11,17 @@ class Materiale():
 
     def tostring(self):
         materiale = str(
-            self.idnr) + ' - Hvad er titelen: ' + self.titel + ' - Hvor mange kopier har biblioteket: ' + str(
-            self.antal) + ' - Hvor mange er udlånt: ' + str(
-            self.antaludlaan) + ' - Hvilket årstal er: ' + str(self.aarstal)
+            self.idnr) + ' - titelen: ' + self.titel + ' - antal kopier: ' + str(
+            self.antal) + ' - udlånt: ' + str(
+            self.antaludlaan) + ' - årstal: ' + str(self.aarstal)
         return materiale.title()
 
-    def udlaan(self, tjek_udlaan):
-        self.antaludlaan += tjek_udlaan
+    def udlaan(self, antallaan):
+        self.antaludlaan += antallaan
+        return self.antaludlaan
 
-    def kan_udlaane(self, tjek_antal):
-        if tjek_antal <= self.antaludlaan:
+    def kan_udlaane(self, antalkopi, antallaan):
+        if antalkopi >= antallaan:
             return True
         else:
             return False
@@ -34,17 +35,14 @@ class Materiale():
 
 class Bog(Materiale):
 
-    def __init__(self, idnr=0, titel="", antal=3, antaludlaan=2, aarstal=9999, antalsider=0, forfatter=""):
+    def __init__(self, idnr=0, titel="", antal=0, antaludlaan=0, aarstal=9999, antalsider=0, forfatter=""):
         super().__init__(idnr, titel, antal, antaludlaan, aarstal)
         self.antalsider = antalsider
         self.forfatter = forfatter
 
     def tostring(self):
-        bog = str(self.idnr) + ' - Hvad er titelen: ' + self.titel + ' - Hvor mange kopier har biblioteket: ' + str(
-            self.antal) + ' - Hvor mange er udlånt: ' + str(
-            self.antaludlaan) + ' - Hvilket årstal er: ' + str(
-            self.aarstal) + ' - Antal sider: ' + str(self.antalsider) + ' - forfatterens navn: ' + self.forfatter
-        return bog
+        bog = super().tostring() + ' - Antal sider: ' + str(self.antalsider) + ' - forfatter: ' + self.forfatter
+        return bog.title()
 
 
 class Film(Materiale):
@@ -54,8 +52,5 @@ class Film(Materiale):
         self.lengde = lengde
 
     def tostring(self):
-        film = str(self.idnr) + ' - Hvad er titelen: ' + self.titel + ' - Hvor mange kopier har biblioteket: ' + str(
-            self.antal) + ' - Hvor mange er udlånt: ' + str(
-            self.antaludlaan) + ' - Hvilket årstal er: ' + str(
-            self.aarstal) + ' - navnet på instruktøren: ' + self.instruktor + ' - antal minutter: ' + str(self.lengde)
-        return film
+        film = super().tostring() + ' - navnet på instruktøren: ' + self.instruktor + ' - antal minutter: ' + str(self.lengde)
+        return film.title()

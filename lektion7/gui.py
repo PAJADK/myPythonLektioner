@@ -1,19 +1,59 @@
 from tkinter import *
+from tkinter import messagebox
+from biblioteket import Materiale, Bog, Film
 
 # TODO - du skal have initialiseret nogle bog objekter og nogle film
 # objekter og sat ind i listen - Lav minium 3 af hver type -
 # og husk at give dem alle et forskelligt ID - som skal bruges til
 # at udlåne det.
-listMaterialer = []
+
+m = Materiale(0, "min bog", 3, 0, 1989)
+bog1 = Bog(1, "min bog", 10, 0, 1989, 560, "lars larsen")
+bog2 = Bog(2, "min bog2", 8, 0, 1989, 560, "lars larsen2")
+bog3 = Bog(3, "min bog3", 28, 0, 1989, 560, "lars larsen2")
+
+film1 = Film(4, "die hard 3", 15, 0, 2007, "John wien", 90)
+film2 = Film(5, "die hard 3", 7, 0, 2007, "John wien", 90)
+film3 = Film(6, "die hard 3", 10, 0, 2007, "John wien", 90)
+
+listMaterialer = [bog1, bog2, bog3, film1, film2, film3]
+
+print(listMaterialer)
 
 
 class Application(Frame):
 
     def udlaan(self):
-        idnr = self.id_entry.get()
-        print("id der skal lånes: " + idnr)
+
         # TODO - her skal du have udlånt det korrekte materiale.
         # med det korrekte id og opdater objektet.
+        # print("id der skal lånes: " + idnr)
+
+        idnr = self.id_entry.get()
+        found = False
+
+        if len(idnr) == 0:
+            messagebox.showwarning("Warning", "Input felten er tom!!!!")
+        else:
+            udlaanId = [bog1.idnr, bog2.idnr, bog3.idnr, film1.idnr, film2.idnr, film3.idnr]
+
+            for laanid in udlaanId:
+                if laanid == int(idnr):
+                    self.listGui.delete('1.0', END)
+                    list_index = udlaanId.index(laanid)
+                    listMaterialer[list_index].antaludlaan = m.udlaan(1)
+                    kan_udlaane = m.kan_udlaane(listMaterialer[list_index].antal,
+                                                listMaterialer[list_index].antaludlaan)
+                    print(listMaterialer[list_index].antal)
+                    print(listMaterialer[list_index].antaludlaan)
+                    print(kan_udlaane)
+                    if not kan_udlaane:
+                        messagebox.showwarning("Warning", "du kan ikke lån!!!")
+                    self.listGui.insert(END, listMaterialer[list_index].tostring())
+                    found = True
+
+            if not found:
+                messagebox.showwarning("Warning", "findes ikke!!!")
 
     def aflever(self):
         idnr = self.aflever_entry.get()
@@ -23,7 +63,7 @@ class Application(Frame):
 
     def sog_i_listen(self):
         search_text = self.entry.get()
-        print("søge tekst: "+search_text)
+        print("søge tekst: " + search_text)
         # TODO Nu skal listen af materiale søges igennem og
         # de materialer som matcher (dvs. hvor søgestrengen indgår som
         # en delstring) skal nu vises i listen og altså IKKE alle
@@ -35,8 +75,11 @@ class Application(Frame):
         print("Vis hele listen")
         # linjen nedenunder sletter hele listen i GUI'en
         # Den være være nyttig andre steder.....
-        self.listGui.delete('1.0', END)
+        #    self.listGui.delete('1.0', END)
         # TODO - nu skal du vise HELE listen af materialer igen
+        self.listGui.delete('1.0', END)
+        for mat in listMaterialer:
+            self.listGui.insert(INSERT, mat.tostring() + "\n")
 
     def create_widgets(self):
         frame = Frame(self)
@@ -49,7 +92,7 @@ class Application(Frame):
         self.QUIT.pack({"side": "left"})
 
         # definition og mapping af vis hele listen knappen
-        self.visListe = Button(frame,text="Vis hele listen")
+        self.visListe = Button(frame, text="Vis hele listen")
         self.visListe["command"] = self.vis_hele_listen
         self.visListe.pack({"side": "left"})
 
@@ -94,8 +137,9 @@ class Application(Frame):
         # igennem og toString metoden bliver kaldt og så bliver
         # der indsat en ny linje i Text widgeten
         self.listGui = Text(self, width=140)
+
         for materiale in listMaterialer:
-            self.listGui.insert(INSERT, materiale.toString()+"\n")
+            self.listGui.insert(INSERT, materiale.tostring() + "\n")
         frame.pack()
         self.listGui.pack()
 
