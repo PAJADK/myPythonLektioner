@@ -7,6 +7,6 @@ root.withdraw()
 
 # message box display
 #messagebox.showerror("Error", "Error message")
-#messagebox.showwarning("Warning", "Warning message", icon='error')
+messagebox.showwarning("Warning", "Warning message", icon='info')
 #messagebox.showinfo("Information", "Informative message")
 
