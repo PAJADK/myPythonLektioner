@@ -10,13 +10,15 @@ from biblioteket import Materiale, Bog, Film
 m = Materiale(0, "Das Kapital", 3, 0, 2015)
 bog1 = Bog(1, "Das Kapital", 8, 0, 1989, 697, "Karl Marx")
 bog2 = Bog(2, "Outlander", 10, 0, 2015, 749, "Diana Gabaldon")
-bog3 = Bog(3, "Fra krig og fred", 28, 0, 1989, 560, "lars larsen2")
+bog3 = Bog(3, "Fra krig og fred", 28, 0, 1865, 560, "Lev Tolstojs")
+bog4 = Bog(7, "Den, der lever stille", 28, 0, 2018, 374, "Leonora Christina Skov")
 
-film1 = Film(4, "die hard 3", 15, 0, 2007, "John wien", 90)
-film2 = Film(5, "die hard 3", 7, 0, 2007, "John wien", 90)
-film3 = Film(6, "die hard 3", 10, 0, 2007, "John wien", 90)
+film1 = Film(4, "The Godfather", 15, 0, 1972, " Francis Ford Coppola", 178)
+film2 = Film(5, "Lady Bird", 7, 0, 2017, "Greta Gerwig", 93)
+film3 = Film(6, "CASABLANCA", 10, 0, 1942, "Michael Curtiz", 102)
+film4 = Film(7, "Moonlight", 10, 0, 2017, "Barry Jenkins", 110)
 
-listMaterialer = [bog1, bog2, bog3, film1, film2, film3]
+listMaterialer = [bog1, bog2, bog3, bog4,film1, film2, film3]
 
 class Application(Frame):
 
@@ -33,7 +35,7 @@ class Application(Frame):
         if len(idnr) == 0:
             messagebox.showwarning("Warning", "Indtast Idnr!")
         else:
-            udlaanId = [bog1.idnr, bog2.idnr, bog3.idnr, film1.idnr, film2.idnr, film3.idnr]
+            udlaanId = [bog1.idnr, bog2.idnr, bog3.idnr, bog4.idnr, film1.idnr, film2.idnr, film3.idnr]
 
             for laanid in udlaanId:
                 if laanid == int(idnr):
@@ -117,11 +119,6 @@ class Application(Frame):
         frame = Frame(self)
         self.winfo_toplevel().title("Biblioteks databasen")
 
-        # definition og mapping af vis hele listen knappen
-        self.visListe = Button(frame, text="Vis hele listen", padx=10, pady=5)
-        self.visListe["command"] = self.vis_hele_listen
-        self.visListe.pack({"side": "left"})
-
         # definition af input søge feltet.
         self.L1 = Label(frame, text="Søge Streng", padx=10)
         self.L1.pack(side=LEFT)
@@ -155,6 +152,11 @@ class Application(Frame):
         self.afleverKnap = Button(frame, text="Aflever", padx=10, pady=5)
         self.afleverKnap["command"] = self.aflever
         self.afleverKnap.pack({"side": "left"})
+
+        # definition og mapping af vis hele listen knappen
+        self.visListe = Button(frame, text="Vis hele listen", padx=10, pady=5)
+        self.visListe["command"] = self.vis_hele_listen
+        self.visListe.pack({"side": "left"})
 
         # definition af quit knap
         self.QUIT = Button(frame, text="QUIT", padx=10, pady=5)

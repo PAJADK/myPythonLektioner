@@ -5,7 +5,12 @@ class Application(Frame):
     def say_hi(self):
         print("hi there, everyone!")
 
-    def createWidgets(self):
+    def createWidgets(self, frame1=None):
+        self.L1 = Label(frame1, text="ID for aflevering:", padx=10)
+        self.L1.pack(side=LEFT)
+        frame1.pack()
+
+        
         self.QUIT = Button(self)
         self.QUIT["text"] = "QUIT"
         self.QUIT["fg"] = "red"
